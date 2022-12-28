@@ -1,0 +1,68 @@
+
+#include<iostream>
+#include<string>
+#include<map>
+using namespace std;
+class country
+{
+        public:
+        string state;
+        int population;
+        map<string,int> s;
+        map<string,int>::iterator i;
+        void input()
+        {
+            cout << "\n Enter the name of state:";
+            cin >> state;
+            cout<<"\n Enter the population(in Cr): ";
+            cin>> population;
+            s.insert(pair<string,int>(state,population));
+        }
+        void display()
+        {
+            cout << "State and Populations are: ";
+            for (i= s.begin(); i != s.end(); i++) 
+            cout <<"["<<(*i).first << ", "<<(*i).second<<"]";
+        }
+        void searching()
+        {
+            cout << "\n Enter the name of state for searching its population: ";
+            cin>> state;
+            if(s.count(state)!=0)
+            cout << "Population is "<<s.find(state)->second<<"Crore";
+            else
+            cout << "State is not present in the list" << endl;
+        }
+};
+
+int main()
+{
+    country c;
+    char ans = 'y';
+    int choice;
+    do
+    {
+        cout << "\n Main Menu";
+        cout<<"\n1. INSERT A STATE : ";
+        cout << "\n2. DISPLAY THE STATE";
+        cout << "\n3. SEARCH A STATE : ";
+        cout<<"\n ENTER YOUR CHOICE : ";
+        cin >> choice;
+
+        switch (choice)
+            {
+                case 1:
+                c.input();
+                break;
+                case 2:
+                c.display();
+                break;
+                case 3:
+                c.searching();
+                break;
+            }
+        cout << "\n Do you want to continue?(y/n): ";
+        cin >> ans;
+    } while (ans == 'y' || ans == 'Y');
+    return 0;
+}

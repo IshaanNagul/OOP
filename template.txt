@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+template<typename T>
+void selection_sort(T n)
+{
+    T a[50];
+    T temp;
+    cout<<"Enter the array elements: "<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if( a[i]>a[j])
+            {
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+
+            }
+        }
+    }
+    cout<<"sorted array is: "<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cout<<a[i]<<"\n";
+    }
+};
+int main()
+{
+    int p,q;
+    do
+    {
+        cout<<"Enter your choice:\n1)for integer sorting\n2)for floating sorting"<<endl;
+        cin>>p;
+        switch(p)
+        {
+            case 1:
+            {
+                cout<<"Enter size for sorting array: "<<endl;
+                cin>>q;
+                selection_sort<int>(q);
+            }
+            break;
+            case 2:
+            {
+                cout<<"Enter size for sorting array: "<<endl;
+                cin>>q;
+                selection_sort<float>(q);
+            }
+            break;
+            case 3:
+            break;
+        } 
+        if(p==3)break;
+    } 
+    while (true);
+    
+    return 0;
+
+}
